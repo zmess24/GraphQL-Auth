@@ -5,7 +5,13 @@ function App({ children }) {
     return (
         <div>
             <Navbar/>
-            {children}
+            <div className="container">
+                <div className="row" style={{ marginTop: 25 }}>
+                    <div className="column">
+                        {children}
+                    </div>
+                </div>
+            </div>
         </div>
     )
 };

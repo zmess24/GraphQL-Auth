@@ -1,12 +1,17 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import CurrentUser from '../../queries/CurrentUser';
+import Logout from '../../mutations/Logout';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-function Navbar({ data }) {
+function Navbar({data, mutate }) {
     let { user } = data;
-    console.log(user)
+
+    const handleLogoutClick = () => {
+        mutate({ refetchQueries: [{ query: CurrentUser }] });
+    }
+
     return (
         <nav className="nav clearfix">
             <div className="float-left">
@@ -18,7 +23,7 @@ function Navbar({ data }) {
                     ? (
                         <span>
                             <Link className="nav-link" to="/profile">Profile</Link>
-                            <Link className="nav-link" to="/logout">Logout</Link>
+                            <a className="nav-link" onClick={handleLogoutClick}>Logout</a>
                         </span>
                     )
                     : (
@@ -33,4 +38,6 @@ function Navbar({ data }) {
     )
 };
 
-export default graphql(CurrentUser)(Navbar);
+export default graphql(Logout)(
+    graphql(CurrentUser)(Navbar)
+);
