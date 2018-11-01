@@ -4,7 +4,9 @@ import CurrentUser from '../../queries/CurrentUser';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-function Navbar({ user }) {
+function Navbar({ data }) {
+    let { user } = data;
+    console.log(user)
     return (
         <nav className="nav clearfix">
             <div className="float-left">
