@@ -11,14 +11,32 @@ const mutation = new GraphQLObjectType({
             type: UserType,
             args: {
                 email: { type: GraphQLString },
-                password: { type: GraphQLString },
+                password: { type: GraphQLString }
             },
             // Third arg 'req' represents request object coming from express.
             // Commonly referred to as 'context' in online documentation
             resolve(parentValue, { email, password }, req) { 
                 return AuthService.signup({ email, password, req });
             }
+        },
+        login: {
+            type: UserType,
+            args: {
+                email: { type: GraphQLString },
+                password: { type: GraphQLString }
+            },
+            resolve(parentValue, { email, password }, req) {
+                return AuthService.login({ email, password, req })
+            }
+        },
+        logout: {
+            type: UserType,
+            resolve(parentValue, args, req) {
+                return AuthService.logout(req);
+            }
         }
     }
 });
+
+module.exports = mutation;
 
