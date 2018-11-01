@@ -14,7 +14,7 @@ const mutation = new GraphQLObjectType({
                 password: { type: GraphQLString }
             },
             // Third arg 'req' represents request object coming from express.
-            // Commonly referred to as 'context' in online documentation
+            // Commonly referred to as 'context' in online GraphQL documentation
             resolve(parentValue, { email, password }, req) { 
                 return AuthService.signup({ email, password, req });
             }
