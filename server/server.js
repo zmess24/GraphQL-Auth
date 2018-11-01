@@ -1,4 +1,4 @@
-require('dotenv').congif();
+require('dotenv').config();
 
 const 
 	express = require('express'),
@@ -10,17 +10,15 @@ const
 	passport = require('passport'),
 	passportConfig = require('./services/auth'),
 	MongoStore = require('connect-mongo')(session),
-	schema = require('./schema/schema');
-
-// Replace with your mongoLab URI
-const MONGO_URI = '';
+	schema = require('./schema/schema'),
+	{ MONGODB_URI } = process.env;
 
 // Mongoose's built in promise library is deprecated, replace it with ES2015 Promise
 mongoose.Promise = global.Promise;
 
 // Connect to the mongoDB instance and log a message
 // on success or failure
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 mongoose.connection
     .once('open', () => console.log('Connected to MongoLab instance.'))
     .on('error', error => console.log('Error connecting to MongoLab:', error));
@@ -35,7 +33,7 @@ app.use(session({
   saveUninitialized: true,
   secret: 'aaabbbccc',
   store: new MongoStore({
-    url: MONGO_URI,
+    url: MONGODB_URI,
     autoReconnect: true
   })
 }));
