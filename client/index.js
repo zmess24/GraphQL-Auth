@@ -8,6 +8,7 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
 
 
 const link = createHttpLink({ // Responsible for creating network interface to hold cookie
@@ -30,14 +31,15 @@ const client = new ApolloClient({
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-		<Router>
-			<Layout>
-				<Switch>
-					<Route exact path="/" component={Home}/>
-					<Route path="/login" component={LoginForm}/>
-				</Switch>
-			</Layout>
-		</Router>
+			<Router>
+				<Layout>
+					<Switch>
+						<Route exact path="/" component={Home}/>
+						<Route path="/login" component={LoginForm}/>
+						<Route path="/signup" component={SignupForm}/>
+					</Switch>
+				</Layout>
+			</Router>
     </ApolloProvider>
   );
 };
