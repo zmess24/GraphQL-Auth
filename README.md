@@ -1,4 +1,4 @@
-# GraphQL: Apollo Client
+# GraphQL: Fullstack Application and Auth
 
 ## Introduction:
 
