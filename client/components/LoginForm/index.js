@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AuthForm from '../AuthForm';
 import Header from '../Header';
 import Login from '../../mutations/Login';
 import CurrentUser from '../../queries/CurrentUser';
 import { graphql } from 'react-apollo';
 
-function LoginForm({ mutate }) {
+function LoginForm({ mutate, history, data }) {
     const [errors, setErrors] = useState([]);
+
+    // React hook replacement for `ComponentWillUpdate`
+    // Second argument tells 'useEffect' to only run if data.user has changed;
+    useEffect(() => { if (data.user) history.push('/dashboard') }, [data.user]);
 
     const handleAuth = async (email, password) => {
         try {
@@ -32,4 +36,6 @@ function LoginForm({ mutate }) {
     )
 };
 
-export default graphql(Login)(LoginForm);
+export default graphql(CurrentUser)( 
+    graphql(Login)(LoginForm)
+);
