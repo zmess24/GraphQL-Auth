@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
+import './AuthForm.css';
 
-function AuthForm({ handleAuth }) {
+function AuthForm({ handleAuth, errors }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
         handleAuth(email, password);
-        setEmail('');
-        setPassword('');
     };
 
     return (
@@ -25,7 +24,8 @@ function AuthForm({ handleAuth }) {
                 placeholder="Special Password 123..."
                 onChange={e => setPassword(e.target.value)}
                 value={password}/>
-            <input type="submit"/>
+            {errors.map(error => <div className="errors" key={error}>{error}</div>)}
+            <input style={{ width: "100%" }}type="submit"/>
         </form>
     )
 };
