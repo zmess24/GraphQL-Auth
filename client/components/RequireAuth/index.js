@@ -1,3 +1,12 @@
+/**
+|--------------------------------------------------
+| Note:
+| Would like to refactor to a custom hook to remove
+| the need for HOC's.
+|--------------------------------------------------
+*/
+
+
 import React, { useEffect } from 'react';
 import CurrentUser from '../../queries/CurrentUser';
 import { graphql } from 'react-apollo';
