@@ -10,7 +10,7 @@ This application's purpose was to build a full-stack GraphQL application from sc
 
 As Stephen's tutorial was created two years ago and leveraged an older version of React, I updated the dependecies in order to make use of the current React API and ES7 features that weren't part of standard boilerplate.
 
-In particular, experimented with the newest version of React `16.7.0-alpha.0` which introduced a new feature set called [React Hooks](https://reactjs.org/docs/hooks-intro.html). As such, my components are written to use that new feature set.
+In particular, I experimented with the newest version of React `16.7.0-alpha.0` which introduced a new feature set called [React Hooks](https://reactjs.org/docs/hooks-intro.html). As such, my components are written to use that new feature set.
 
 ## Setup
 
