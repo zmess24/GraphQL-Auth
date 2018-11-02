@@ -7,9 +7,7 @@ function App({ children }) {
             <Navbar/>
             <div className="container">
                 <div className="row" style={{ marginTop: 25 }}>
-                    <div className="column">
-                        {children}
-                    </div>
+                    {children}
                 </div>
             </div>
         </div>

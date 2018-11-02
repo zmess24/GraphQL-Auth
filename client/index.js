@@ -5,8 +5,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory'; //  normalized data store
 import { ApolloProvider } from 'react-apollo';
 import { createHttpLink } from 'apollo-link-http';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './components/Home';
 import Layout from './components/Layout';
+import Home from './components/Home';
+import LoginForm from './components/LoginForm';
+
 
 const link = createHttpLink({ // Responsible for creating network interface to hold cookie
 	uri: '/graphql', // Listen to the graphql endpoint
@@ -32,6 +34,7 @@ const Root = () => {
 			<Layout>
 				<Switch>
 					<Route exact path="/" component={Home}/>
+					<Route path="/login" component={LoginForm}/>
 				</Switch>
 			</Layout>
 		</Router>
