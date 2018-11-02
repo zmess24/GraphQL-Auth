@@ -10,6 +10,7 @@ import Home from './components/Home';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Dashboard from './components/Dashboard';
+import RequireAuth from './components/RequireAuth';
 
 const link = createHttpLink({ // Responsible for creating network interface to hold cookie
 	uri: '/graphql', // Listen to the graphql endpoint
@@ -37,7 +38,7 @@ const Root = () => {
 						<Route exact path="/" component={Home}/>
 						<Route path="/login" component={LoginForm}/>
 						<Route path="/signup" component={SignupForm}/>
-						<Route path="/dashboard" component={Dashboard}/>
+						<Route path="/dashboard" component={RequireAuth(Dashboard)}/>
 					</Switch>
 				</Layout>
 			</Router>
